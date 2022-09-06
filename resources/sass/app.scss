@@ -3,14 +3,13 @@
     1. lv-con-pg-home refers to the home page container;
     2. lv-con-sect-home refers to the home page section container;
 */
-/***** IMPORT CSS STYLES *****/
-/***** FRONT VIEW CSS COMPONENTS *****/
-/***** FRONT VIEW CSS PAGES *****/
-/***** UTILITIES FUNCTIONS & MIXINS *****/
-/***** COLOR THEME 1: CLOSE TO NATURE *****/
-body {
-  background-color: #8FC1E3;
-  font-family: "PT Serif Regular";
-}
 
-/*# sourceMappingURL=app.css.map */
+/***** IMPORT CSS STYLES *****/
+@import 'components/_global.scss';
+@import 'pages/_global.scss';
+@import 'utilities/_global.scss';
+
+body {
+    background-color: map-get($color_theme1, "color_cornflower");
+    font-family: 'PT Serif Regular';
+}
