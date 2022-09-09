@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Log;
 
-class ResumeSection extends Model
+class ResumeSkill extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -16,7 +16,7 @@ class ResumeSection extends Model
      * 
      * @var string
      */
-    protected $table = 'resume_sections';
+    protected $table = 'resume_skills';
 
     /**
      * The primary key associated with the table.
@@ -62,23 +62,23 @@ class ResumeSection extends Model
     ];
 
     /**
-     * Eloquent relationship between resume_sections and resume_contents.
+     * Eloquent relationship between resume_skills and resume_skill_contents.
      */
-    public function resume_contents()
+    public function resume_skill_contents()
     {
-        return $this->hasMany('App\Models\ResumeContent');
+        return $this->hasMany('App\Models\ResumeSkillContent');
     }
 
     /**
-     * Eloquent relationship between resume_sections and resume.
+     * Eloquent relationship between resumes and resume_skills.
      */
     public function resume()
     {
-        return $this->belongsTo('App\Models\Resume');
+        return $this->belongsTo('App\Models\ResumeSkill');
     }
 
     /**
-     * Eloquent polymorphic relationship between resume_sections and logs.
+     * Eloquent polymorphic relationship between resume_skills and logs.
      *
      */
     public function log()

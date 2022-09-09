@@ -14,7 +14,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            ErrorAndNotificationSystemSeeder::class
+            ErrorAndNotificationSystemSeeder::class,
+            ResumeSeeder::class,
+            ResumeSectionSeeder::class,
+            ResumeContentSeeder::class,
+            ResumeContentDetailSeeder::class,
+            ResumeSkillSeeder::class,
+            ResumeSkillContentSeeder::class,
         ]);
     }
 }

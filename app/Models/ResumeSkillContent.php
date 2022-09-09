@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Log;
 
-class ResumeSection extends Model
+class ResumeSkillContent extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -16,7 +16,7 @@ class ResumeSection extends Model
      * 
      * @var string
      */
-    protected $table = 'resume_sections';
+    protected $table = 'resume_skill_contents';
 
     /**
      * The primary key associated with the table.
@@ -30,7 +30,7 @@ class ResumeSection extends Model
      * 
      * @var string
      */
-    protected $foreignKey = 'resume_id';
+    protected $foreignKey = 'resume_skill_id';
     
     /**
      * The data type of the database table foreign key.
@@ -45,7 +45,7 @@ class ResumeSection extends Model
      * @var string
      */
     protected $fillable = [
-        'resume_id',
+        'resume_skill_id',
         'name'
     ];
 
@@ -62,23 +62,15 @@ class ResumeSection extends Model
     ];
 
     /**
-     * Eloquent relationship between resume_sections and resume_contents.
-     */
-    public function resume_contents()
-    {
-        return $this->hasMany('App\Models\ResumeContent');
-    }
-
-    /**
-     * Eloquent relationship between resume_sections and resume.
+     * Eloquent relationship between resume_skill_contents and resume_skills.
      */
     public function resume()
     {
-        return $this->belongsTo('App\Models\Resume');
+        return $this->belongsTo('App\Models\ResumeSkill');
     }
 
     /**
-     * Eloquent polymorphic relationship between resume_sections and logs.
+     * Eloquent polymorphic relationship between resume_skill_contents and logs.
      *
      */
     public function log()

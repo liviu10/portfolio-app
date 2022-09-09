@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateResumeSectionsTable extends Migration
+class CreateResumeSkillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateResumeSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('resume_sections', function (Blueprint $table) {
+        Schema::create('resume_skills', function (Blueprint $table) {
             $table->id()->index('idx_id');
             $table->foreignId('resume_id')->index('idx_resume_id');
             $table->longText('name')->nullable(false);
@@ -23,8 +23,8 @@ class CreateResumeSectionsTable extends Migration
         });
 
         DB::unprepared(
-            'ALTER TABLE `portfolio_app_db`.`resume_sections` 
-                ADD CONSTRAINT `fk_resume_sections_id`
+            'ALTER TABLE `portfolio_app_db`.`resume_skills` 
+                ADD CONSTRAINT `fk_resume_skills_id`
                 FOREIGN KEY (`resume_id`)
                 REFERENCES `portfolio_app_db`.`resume` (`id`)
                 ON DELETE CASCADE
@@ -39,6 +39,6 @@ class CreateResumeSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resume_sections');
+        Schema::dropIfExists('resume_skills');
     }
 }
