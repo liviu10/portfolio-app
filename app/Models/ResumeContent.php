@@ -82,6 +82,14 @@ class ResumeContent extends Model
     }
 
     /**
+     * Eloquent relationship between resume_contents and resume_content_details.
+     */
+    public function resume_content_details()
+    {
+        return $this->hasMany('App\Models\ResumeContentDetail');
+    }
+
+    /**
      * Eloquent relationship between resume_contents and resume_sections.
      */
     public function resume()

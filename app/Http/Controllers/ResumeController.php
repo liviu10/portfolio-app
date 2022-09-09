@@ -54,7 +54,30 @@ class ResumeController extends Controller
      */
     public function index()
     {
-        return view('pages.resume');
+        $displayAllRecords = $this->modelNameResume->select('id')
+                                ->IsActive()
+                                ->with([
+                                    'resume_sections' => function ($query) {
+                                        $query->with([
+                                            'resume_contents' => function ($query) {
+                                                $query->with([
+                                                    'resume_content_details' => function ($query) {
+                                                        $query;
+                                                    }
+                                                ]);
+                                            }
+                                        ]);
+                                    },
+                                    'resume_skills' => function ($query) {
+                                        $query->with([
+                                            'resume_skill_contents' => function ($query) {
+                                                $query;
+                                            }
+                                        ]);
+                                    }
+                                ])
+                                ->get();
+        return view('pages.resume', compact('displayAllRecords'));
     }
 
     /**

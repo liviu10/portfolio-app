@@ -94,7 +94,7 @@ class ResumeSkillContent extends Model
     /**
      * Eloquent relationship between resume_skill_contents and resume_skills.
      */
-    public function resume()
+    public function resume_skill()
     {
         return $this->belongsTo('App\Models\ResumeSkill');
     }

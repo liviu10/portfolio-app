@@ -83,6 +83,15 @@ class Resume extends Model
     }
 
     /**
+     * Eloquent relationship between resume and resume_skills.
+     *
+     */
+    public function resume_skills()
+    {
+        return $this->hasMany('App\Models\ResumeSkill');
+    }
+
+    /**
      * Eloquent polymorphic relationship between resume and logs.
      *
      */

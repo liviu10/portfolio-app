@@ -15,5 +15,5 @@ use App\Http\Controllers\ResumeController;
 |
 */
 
-Route::resource('/', HomeController::class);
-Route::resource('/resume', ResumeController::class);
+Route::resource('/', HomeController::class)->only('index');
+Route::resource('/resume', ResumeController::class)->only('index');

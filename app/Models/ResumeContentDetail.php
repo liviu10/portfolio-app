@@ -84,7 +84,7 @@ class ResumeContentDetail extends Model
     /**
      * Eloquent relationship between resume_content_details and resume_contents.
      */
-    public function resume()
+    public function resume_content()
     {
         return $this->belongsTo('App\Models\ResumeContent');
     }
