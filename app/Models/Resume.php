@@ -38,7 +38,17 @@ class Resume extends Model
      * @var string
      */
     protected $fillable = [
-        'name'
+        'name',
+        'is_active'
+    ];
+
+    /**
+     * The attributes that are mass assignable.
+     * 
+     * @var string
+     */
+    protected $attributes = [
+        'is_active' => false,
     ];
 
     /**
@@ -52,6 +62,16 @@ class Resume extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function scopeIsActive ($query) 
+    {
+        return $query->where('is_active', true);
+    }
+
+    public function scopeIsNotActive ($query) 
+    {
+        return $query->where('is_active', false);
+    }
 
     /**
      * Eloquent relationship between resume and resume_sections.

@@ -22,6 +22,7 @@ class ResumeSeeder extends Seeder
             [
                 'id'         => 1,
                 'name'       => 'Web development Resume',
+                'is_active'  => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

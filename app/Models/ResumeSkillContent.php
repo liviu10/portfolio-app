@@ -46,7 +46,17 @@ class ResumeSkillContent extends Model
      */
     protected $fillable = [
         'resume_skill_id',
-        'name'
+        'name',
+        'is_active'
+    ];
+
+    /**
+     * The attributes that are mass assignable.
+     * 
+     * @var string
+     */
+    protected $attributes = [
+        'is_active' => false,
     ];
 
     /**
@@ -60,6 +70,26 @@ class ResumeSkillContent extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function scopeIsActive ($query) 
+    {
+        return $query->where('is_active', true);
+    }
+
+    public function scopeIsNotActive ($query) 
+    {
+        return $query->where('is_active', false);
+    }
+
+    public function scopeIsFullstackLaravel ($query) 
+    {
+        return $query->where('id', '=', 1);
+    }
+
+    public function scopeIsFullstackDjango ($query) 
+    {
+        return $query->where('id', '=', 2);
+    }
 
     /**
      * Eloquent relationship between resume_skill_contents and resume_skills.

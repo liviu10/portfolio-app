@@ -46,7 +46,17 @@ class ResumeContentDetail extends Model
      */
     protected $fillable = [
         'resume_content_id',
-        'name'
+        'name',
+        'is_active'
+    ];
+
+    /**
+     * The attributes that are mass assignable.
+     * 
+     * @var string
+     */
+    protected $attributes = [
+        'is_active' => false,
     ];
 
     /**
@@ -60,6 +70,16 @@ class ResumeContentDetail extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function scopeIsActive ($query) 
+    {
+        return $query->where('is_active', true);
+    }
+
+    public function scopeIsNotActive ($query) 
+    {
+        return $query->where('is_active', false);
+    }
 
     /**
      * Eloquent relationship between resume_content_details and resume_contents.

@@ -18,6 +18,7 @@ class CreateResumeSkillContentsTable extends Migration
             $table->id()->index('idx_id');
             $table->foreignId('resume_skill_id')->index('idx_resume_skill_id');
             $table->longText('name')->nullable(false);
+            $table->string('is_active', 3)->default('0');
             $table->timestamps();
             $table->softDeletes();
         });
